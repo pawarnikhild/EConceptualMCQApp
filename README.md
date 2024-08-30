@@ -1,79 +1,90 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native MCQ Test App Technical Assessment
 
-# Getting Started
+This project implements a feature that allows users to answer multiple-choice questions (MCQs) fetched from an API. The users can see the questions, select one answer per question, and submit their answers to get a score based on their performance.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Table of Contents
 
-## Step 1: Start the Metro Server
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Installation](#installation)
+- [APK file](#apk-file)
+- [Project Snapshots](#project-snapshots)
+- [Acknowledgments](#acknowledgments)
+- [Contact](#contact)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Tech Stack
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- [React Native](https://reactnative.dev/): Core framework for building the app.
+- [TypeScript](https://www.typescriptlang.org/): Superset of JavaScript that adds static typing, enhancing code quality and developer experience with type safety and autocompletion.
+- [Context API](https://react.dev/reference/react/createContext): Provides a way to manage and share state across the app without prop drilling.
+- [React Native Pie Chart](https://www.npmjs.com/package/react-native-pie-chart): A library for creating interactive pie charts to visually represent data.
+- [React Native Async Storage](https://www.npmjs.com/package/@react-native-async-storage/async-storage): Local storage for saving the last searched city.
+- [React Native Vector Icons](https://www.npmjs.com/package/react-native-vector-icons): Icon library for adding visually appealing icons to the app.
+- [React Navigation](https://reactnavigation.org/): Navigation library for routing between screens in the app.
 
-```bash
-# using npm
-npm start
+## Features
 
-# OR using Yarn
-yarn start
+- Fetch and Display Multiple-Choice Questions
+- Allow users to select one answer per question.
+- Display the result using pie chart and relevant informations
+
+## Installation
+
+1.**Clone the repository**
+```
+git clone https://github.com/pawarnikhild/EConceptualMCQApp
+```
+2.**Navigate to project repository and install dependencies**
+```
+cd EConceptualMCQApp
+npm Install
+```
+3.**Run the Application::**
+
+For Android:
+```
+npx react-native run-android
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+For iOS:
+```
+npx react-native run-ios
 ```
 
-### For iOS
+## APK file
 
-```bash
-# using npm
-npm run ios
+[Download apk](https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/APK/EConceptualMCQApp.apk)
 
-# OR using Yarn
-yarn ios
-```
+>**Note:** The APK provided is safe to install. It does not contain any harmful content. You can confidently install it on your device.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## Project Snapshots
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+Here are screenshots of the project:
 
-## Step 3: Modifying your App
+<p align="center">
+  <img src="https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/Screenshots/Screenshot_1.png" alt="Screenshot 1" width="200" style="margin-right: 10px;"/>
+  <img src="https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/Screenshots/Screenshot_2.png" alt="Screenshot 2" width="200" style="margin-right: 10px;"/>
+  <img src="https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/Screenshots/Screenshot_3.png" alt="Screenshot 3" width="200" style="margin-right: 10px;"/>
+  <img src="https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/Screenshots/Screenshot_4.png" alt="Screenshot 4" width="200" style="margin-right: 10px;"/>
+</p>
 
-Now that you have successfully run the app, let's modify it.
+<p align="center">
+  <img src="https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/Screenshots/Screenshot_5.png" alt="Screenshot 5" width="200" style="margin-right: 10px;"/>
+  <img src="https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/Screenshots/Screenshot_6.png" alt="Screenshot 6" width="200" style="margin-right: 10px;"/>
+  <img src="https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/Screenshots/Screenshot_7.png" alt="Screenshot 7" width="200" style="margin-right: 10px;"/>
+  <img src="https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/Screenshots/Screenshot_8.png" alt="Screenshot 8" width="200" style="margin-right: 10px;"/>
+</p>
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+>**Note:** A demo video showcasing the application in action is available. You can watch it [here](https://drive.google.com/file/d/1aGFAs_5JcRu5_oBSMCgjgXn_m3CPWRmA/view).
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+## Acknowledgments
 
-## Congratulations! :tada:
+This project was completed with guidance from [Subhadeep K](subhadeep@EConceptualMCQApp.com), who provided this task. Thanks to him for his support and for making this opportunity possible.
 
-You've successfully run and modified your React Native App. :partying_face:
+## Contact
 
-### Now what?
+For any questions or suggestions, kindly reach out:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- Email: pawarnikhild@gmail.com
+- LinkedIn: https://www.linkedin.com/in/nikhil-pawar-529687223/
+- GitHub: https://github.com/pawarnikhild
