@@ -4,10 +4,13 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import AuthContext from '../../context/AuthContext';
+import {useAppDispatch} from '../../redux-toolkit/hooks';
+import {calculateResult} from '../../redux-toolkit/slices/resultSlice';
+
 import {StackNavigationParamList} from '../../routes/StackNavigation';
 import {fetchQuestions} from '../../services/question-services';
 
-import {Answers, Question, Results} from './QuestionTypes';
+import {Question} from './QuestionTypes';
 import QuestionScreenView from './QuestionScreenView';
 
 const QuestionScreen = () => {
@@ -16,6 +19,8 @@ const QuestionScreen = () => {
     throw new Error('AuthContext is missing values!');
   }
   const {token} = authContext;
+
+  const dispatch = useAppDispatch();
 
   const navigation =
     useNavigation<
@@ -92,58 +97,14 @@ const QuestionScreen = () => {
       {
         text: 'OK',
         onPress: () => {
-          const results = calculateResults(questions, answers);
-          console.log('Results:', results);
-          navigation.replace('Result', results);
+          dispatch(calculateResult({questions, answers}));
+          navigation.replace('Result');
         },
       },
     ]);
-    // const results = calculateResults(questions, answers);
-    // console.log('Results:', results);
-    // navigation.navigate('Result', results);
+    // dispatch(calculateResult({questions, answers}))
+    // navigation.navigate('Result')
   };
-
-  function calculateResults(questions: Question[], answers: Answers): Results {
-    let correctAnswersCount = 0;
-    let wrongAnswersCount = 0;
-    let marksScored = 0;
-    let marksLost = 0;
-    let totalMarks = 0;
-
-    questions.forEach(question => {
-      const userAnswer = answers[question.id];
-      const isAnswered = userAnswer !== undefined;
-      if (isAnswered && userAnswer !== null) {
-        const correctAnswer = Object.keys(question)
-          .filter(
-            key =>
-              key.startsWith('answer_') &&
-              question[key as keyof Question] === true,
-          )
-          .map(key => key.replace('answer_', ''))
-          .join('');
-        const isCorrect = `option_${correctAnswer}` === userAnswer;
-        if (isCorrect) {
-          correctAnswersCount++;
-          marksScored += question.correct_mark;
-        } else {
-          wrongAnswersCount++;
-          marksLost += question.incorrect_mark;
-        }
-      } else if (userAnswer === null) {
-        marksScored += question.question_skipped_mark;
-      }
-      totalMarks += question.correct_mark;
-    });
-    const totalMarksScored = marksScored + marksLost;
-    return {
-      correctAnswers: correctAnswersCount,
-      wrongAnswers: wrongAnswersCount,
-      marksScored: totalMarksScored,
-      marksLost,
-      totalMarks,
-    };
-  }
 
   return (
     <QuestionScreenView

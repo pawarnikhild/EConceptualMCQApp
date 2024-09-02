@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, Alert} from 'react-native';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {Alert} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
+import {useAppSelector} from '../../redux-toolkit/hooks';
 import {StackNavigationParamList} from '../../routes/StackNavigation';
 
 import ResultScreenView from './ResultScreenView';
@@ -11,33 +12,22 @@ import {sections} from './ResultTypes';
 import {removeToken} from '../../utils/asyncStorage';
 
 const ResultScreen = () => {
-  const navigation =
-    useNavigation<
-      NativeStackNavigationProp<StackNavigationParamList, 'Login'>
-    >();
+  const navigation = useNavigation<NativeStackNavigationProp<StackNavigationParamList>>();
 
-  const route = useRoute<RouteProp<StackNavigationParamList, 'Result'>>();
-
-  const results = route.params ?? {
-    correctAnswers: 0,
-    wrongAnswers: 0,
-    marksScored: 0,
-    marksLost: 0,
-    totalMarks: 0,
-  };
+  const result = useAppSelector(state => state.result);
 
   const sections: sections = {
     percentage: [],
     colors: [],
   };
 
-  if (results.marksScored < 0) {
+  if (result.marksScored < 0) {
     sections.percentage = [1]; // This requires at least a number which should not be 0 or negative
     sections.colors = [AppColor.grey];
   } else {
     sections.percentage = [
-      results.marksScored,
-      results.totalMarks - results.marksScored,
+      result.marksScored,
+      result.totalMarks - result.marksScored,
     ];
     sections.colors = [AppColor.green, AppColor.red];
   }
@@ -68,7 +58,7 @@ const ResultScreen = () => {
 
   return (
     <ResultScreenView
-      results={results}
+      result={result}
       sections={sections}
       handleReTakeTest={handleReTakeTest}
       logout={logout}

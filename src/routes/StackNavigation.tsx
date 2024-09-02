@@ -6,7 +6,6 @@ import SplashScreen from '../screens/Splash/SplashScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
 import QuestionScreen from '../screens/Question/QuestionScreen';
 import ResultScreen from '../screens/Result/ResultScreen';
-import { Results } from '../screens/Question/QuestionTypes';
 
 const Stack = createNativeStackNavigator<StackNavigationParamList>();
 
@@ -14,7 +13,7 @@ export type StackNavigationParamList = {
   Splash: undefined;
   Login: undefined;
   Question: undefined;
-  Result: Results
+  Result: undefined
 };
 
 // export type ResultScreenRouteProp = RouteProp<StackNavigationParamList, 'Result'>;

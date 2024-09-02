@@ -11,7 +11,7 @@ import {AppColor} from '../../utils/StyleConstant';
 import ResultScreenStyle from './ResultScreenStyle';
 
 const ResultScreenView = (props: ResultScreenViewProps) => {
-  const {results, sections, handleReTakeTest, logout} = props;
+  const {result, sections, handleReTakeTest, logout} = props;
   return (
     <SafeAreaView style={GlobalStyles.appContainer}>
       <StatusBar />
@@ -26,47 +26,47 @@ const ResultScreenView = (props: ResultScreenViewProps) => {
           coverFill={'#FFF'}
           style={ResultScreenStyle.pieChart}
         />
-        {results.marksScored <= 0 ? (
+        {result.marksScored <= 0 ? (
           <Text style={[ResultScreenStyle.textMessage, {color: AppColor.red}]}>
-            Keep trying!{'\n'}You scored {results.marksLost}/
-            {results.totalMarks} marks.
+            Keep trying!{'\n'}You scored {result.marksLost}/
+            {result.totalMarks} marks.
           </Text>
         ) : (
           <Text
             style={[ResultScreenStyle.textMessage, {color: AppColor.green}]}>
-            Great job!{'\n'} You scored {results.marksScored}/
-            {results.totalMarks} marks.
+            Great job!{'\n'} You scored {result.marksScored}/
+            {result.totalMarks} marks.
           </Text>
         )}
         <View style={ResultScreenStyle.textView}>
           <View style={ResultScreenStyle.row}>
             <Text style={ResultScreenStyle.resultText}>Correct Answers:</Text>
             <Text style={[ResultScreenStyle.resultText, {marginLeft: 30}]}>
-              {results.correctAnswers}
+              {result.correctAnswers}
             </Text>
           </View>
           <View style={ResultScreenStyle.row}>
             <Text style={ResultScreenStyle.resultText}>Wrong Answers:</Text>
             <Text style={[ResultScreenStyle.resultText, {marginLeft: 30}]}>
-              {results.wrongAnswers}
+              {result.wrongAnswers}
             </Text>
           </View>
           <View style={ResultScreenStyle.row}>
             <Text style={ResultScreenStyle.resultText}>Marks scored:</Text>
             <Text style={[ResultScreenStyle.resultText, {marginLeft: 30}]}>
-              {results.marksScored}
+              {result.marksScored}
             </Text>
           </View>
           <View style={ResultScreenStyle.row}>
             <Text style={ResultScreenStyle.resultText}>Marks lost:</Text>
             <Text style={[ResultScreenStyle.resultText, {marginLeft: 30}]}>
-              {results.marksLost}
+              {result.marksLost}
             </Text>
           </View>
           <View style={ResultScreenStyle.row}>
             <Text style={ResultScreenStyle.resultText}>Total marks:</Text>
             <Text style={[ResultScreenStyle.resultText, {marginLeft: 30}]}>
-              {results.totalMarks}
+              {result.totalMarks}
             </Text>
           </View>
         </View>

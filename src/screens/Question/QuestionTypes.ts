@@ -30,7 +30,7 @@ export type QuestionScreenViewProps = {
     handleSubmit: () => void,
 }
 
-export type  Results = {
+export type  Result = {
     correctAnswers: number;
     wrongAnswers: number;
     marksScored: number;
