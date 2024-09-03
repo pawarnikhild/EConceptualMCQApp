@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import resultReducer from './slices/resultSlice'
+import authReducer from './slices/authSlice'
 import questionReducer from './slices/questionSlice'
+import resultReducer from './slices/resultSlice'
 
 export const store = configureStore({
     reducer: {
+        auth: authReducer,
+        question: questionReducer,
         result: resultReducer,
-        question: questionReducer
     }
 
 })

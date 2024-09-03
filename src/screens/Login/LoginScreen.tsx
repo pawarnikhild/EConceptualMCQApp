@@ -3,23 +3,16 @@ import {Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-import AuthContext from '../../context/AuthContext';
 import {StackNavigationParamList} from '../../routes/StackNavigation';
-import {login} from '../../services/auth-services';
 import {storeToken} from '../../utils/asyncStorage';
+import {useAppDispatch} from '../../redux-toolkit/hooks';
+import {login} from '../../redux-toolkit/slices/authSlice';
 
 import LoginScreenView from './LoginScreenView';
 
 const LoginScreen = () => {
-  const navigation =
-    useNavigation<
-      NativeStackNavigationProp<StackNavigationParamList, 'Login'>
-    >();
-  const authContext = useContext(AuthContext);
-  if (authContext === undefined) {
-    throw new Error('AuthContext is missing values!');
-  }
-  const {setToken} = authContext;
+  const navigation = useNavigation<NativeStackNavigationProp<StackNavigationParamList>>();
+  const dispatch = useAppDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -49,23 +42,23 @@ const LoginScreen = () => {
       return;
     } else {
       try {
-        setLoading(true);
-        const result = await login(email, password);
-        // console.log('result in loginScreen', result);
+        const resultAction = await dispatch(login({email, password}));
+        // console.log('result in loginScreen', resultAction);
         // email: admin@econceptual.com
         // password: admin-password
-        if (result.success) {
-          setToken(result.data.token);
-          storeToken(result.data.token);
+        if (login.fulfilled.match(resultAction)) {
+          const {token} = resultAction.payload;
+          storeToken(token);
           Alert.alert('Login Successful', 'You have logged in successfully!', [
             {
               text: 'Ok',
               onPress: () => navigation.replace('Question'),
             },
           ]);
-        } else {
-          console.log('Error in getting questions', result.error);
-          Alert.alert('Login Failed', result.error);
+        } else if (login.rejected.match(resultAction)) {
+          const errorMessage = resultAction.payload as string;
+          console.log('Error in getting questions', errorMessage);
+          Alert.alert('Login Failed', errorMessage);
         }
       } catch (error) {
         console.log(

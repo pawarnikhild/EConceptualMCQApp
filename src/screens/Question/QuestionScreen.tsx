@@ -3,24 +3,18 @@ import {Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-import AuthContext from '../../context/AuthContext';
+import {StackNavigationParamList} from '../../routes/StackNavigation';
 import {useAppDispatch, useAppSelector} from '../../redux-toolkit/hooks';
 import {calculateResult} from '../../redux-toolkit/slices/resultSlice';
-
-import {StackNavigationParamList} from '../../routes/StackNavigation';
 import {fetchQuestions} from '../../redux-toolkit/slices/questionSlice';
 
 import QuestionScreenView from './QuestionScreenView';
 
 const QuestionScreen = () => {
-  const authContext = useContext(AuthContext);
-  if (authContext === undefined) {
-    throw new Error('AuthContext is missing values!');
-  }
-  const {token} = authContext;
-
+  const token = useAppSelector(state => state.auth.token)
   const dispatch = useAppDispatch();
   const {questions, loading} = useAppSelector(state => state.question);
+
 
   const navigation =
     useNavigation<NativeStackNavigationProp<StackNavigationParamList>>();
@@ -32,8 +26,10 @@ const QuestionScreen = () => {
   const currentAnswer = answers[currentQuestion?.id] || '';
 
   useEffect(() => {
-    dispatch(fetchQuestions(token));
-  }, [token]);
+    if (token) {
+      dispatch(fetchQuestions(token));
+    }
+  }, [token, dispatch]);
 
   const handleValueChange = (newValue: string) => {
     setAnswers(prevAnswers => {

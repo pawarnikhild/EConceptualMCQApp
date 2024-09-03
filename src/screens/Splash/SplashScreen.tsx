@@ -1,24 +1,18 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackNavigationParamList} from '../../routes/StackNavigation';
 
-import AuthContext from '../../context/AuthContext';
+import {useAppDispatch} from '../../redux-toolkit/hooks';
+import {setToken} from '../../redux-toolkit/slices/authSlice';
 import {retrieveToken} from '../../utils/asyncStorage';
 
 import SplashScreenView from './SplashScreenView';
 
 const SplashScreen = () => {
-  const navigation =
-    useNavigation<
-      NativeStackNavigationProp<StackNavigationParamList, 'Login'>
-    >();
-  const authContext = useContext(AuthContext);
-  if (authContext === undefined) {
-    throw new Error('AuthContext is missing values!');
-  }
-  const {setToken} = authContext;
-
+  const navigation = useNavigation<NativeStackNavigationProp<StackNavigationParamList>>();
+  const dispatch = useAppDispatch();
+  
   useEffect(() => {
     checkLoginStatus();
   }, []);
@@ -27,8 +21,9 @@ const SplashScreen = () => {
     try {
       const userToken = await retrieveToken();
       if (userToken) {
-        console.log('User has logged in already');
-        setToken(userToken);
+        console.log('Found token, user has logged in already!');
+        // console.log('token', userToken)
+        dispatch(setToken(userToken));
         setTimeout(() => {
           navigation.replace('Question');
         }, 2000);

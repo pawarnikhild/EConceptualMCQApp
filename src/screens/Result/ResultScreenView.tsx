@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, Text, View} from 'react-native';
-//@ts-ignore
+// @ts-ignore
 import PieChart from 'react-native-pie-chart';
 
 import CustomButton from '../../components/CustomButton';
