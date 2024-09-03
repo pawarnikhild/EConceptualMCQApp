@@ -16,7 +16,7 @@ This project implements a feature that allows users to answer multiple-choice qu
 
 - [React Native](https://reactnative.dev/): Core framework for building the app.
 - [TypeScript](https://www.typescriptlang.org/): Superset of JavaScript that adds static typing, enhancing code quality and developer experience with type safety and autocompletion.
-- [Context API](https://react.dev/reference/react/createContext): Provides a way to manage and share state across the app without prop drilling.
+- [Redux Toolkit](https://redux-toolkit.js.org/): A powerful library for efficient Redux development, providing tools for managing and centralizing state with ease.
 - [React Native Pie Chart](https://www.npmjs.com/package/react-native-pie-chart): A library for creating interactive pie charts to visually represent data.
 - [Axios](https://www.npmjs.com/package/axios): A promise-based HTTP client for making API requests to fetch data and handle network communication.
 - [React Native Async Storage](https://www.npmjs.com/package/@react-native-async-storage/async-storage): Local storage for saving the last searched city.
