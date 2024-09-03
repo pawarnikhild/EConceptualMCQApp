@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Question, Answers, Result} from '../../screens/Question/QuestionTypes';
+import {Question, Answers, Result} from '../../types/CommonTypes';
 
 const initialState: Result = {
   correctAnswers: 0,

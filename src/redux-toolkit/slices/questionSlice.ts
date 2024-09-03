@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchQuestionsService } from "../../services/question-services";
-import { Question } from "../../screens/Question/QuestionTypes";
+import { Question } from "../../types/CommonTypes";
 
 type QuestionState = {
     questions: Question[],
