@@ -6,7 +6,6 @@ import {
   Platform,
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -18,9 +17,9 @@ import CustomTextInput from '../../components/CustomTextInput';
 import CustomButton from '../../components/CustomButton';
 import IconButton from '../../components/IconButton';
 
-import {LoginScreenViewProps} from './LoginTypes';
+import { LoginScreenViewProps } from './LoginTypes';
 import GlobalStyles from '../../utils/GlobalStyles';
-import {AppColor} from '../../utils/StyleConstant';
+import { AppColor } from '../../utils/StyleConstant';
 import LoginScreenStyle from './LoginScreenStyle';
 
 const LoginScreenView = ({
@@ -73,7 +72,9 @@ const LoginScreenView = ({
               />
               <TouchableOpacity
                 onPress={() => console.log('Forgot Password pressed')}>
-                <Text style={LoginScreenStyle.forgotPasswordText}>Forgot Password?</Text>
+                <Text style={LoginScreenStyle.forgotPasswordText}>
+                  Forgot Password?
+                </Text>
               </TouchableOpacity>
               <CustomButton
                 title="Login"
@@ -88,10 +89,14 @@ const LoginScreenView = ({
                 <IconButton name="google" size={24} color={AppColor.orange} />
               </View>
               <View style={LoginScreenStyle.registerContainer}>
-                <Text style={LoginScreenStyle.registerText}>Don't have an account? </Text>
+                <Text style={LoginScreenStyle.registerText}>
+                  Don't have an account?{' '}
+                </Text>
                 <TouchableOpacity
                   onPress={() => console.log('Register Now pressed')}>
-                  <Text style={LoginScreenStyle.registerLink}>Register Now</Text>
+                  <Text style={LoginScreenStyle.registerLink}>
+                    Register Now
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>

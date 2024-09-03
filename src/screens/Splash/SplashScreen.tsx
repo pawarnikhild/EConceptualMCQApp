@@ -1,18 +1,18 @@
-import React, {useEffect} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {StackNavigationParamList} from '../../routes/StackNavigation';
+import React, { useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackNavigationParamList } from '../../routes/StackNavigation';
 
-import {useAppDispatch} from '../../redux-toolkit/hooks';
-import {setToken} from '../../redux-toolkit/slices/authSlice';
-import {retrieveToken} from '../../utils/asyncStorage';
+import { retrieveToken } from '../../utils/asyncStorage';
+import { useAppDispatch } from '../../redux-toolkit/hooks';
+import { setToken } from '../../redux-toolkit/slices/authSlice';
 
 import SplashScreenView from './SplashScreenView';
 
 const SplashScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<StackNavigationParamList>>();
   const dispatch = useAppDispatch();
-  
+
   useEffect(() => {
     checkLoginStatus();
   }, []);

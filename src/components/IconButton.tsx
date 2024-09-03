@@ -1,7 +1,7 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
-import {AppColor} from '../utils/StyleConstant';
+import { AppColor } from '../utils/StyleConstant';
 
 type IconButtonProps = {
   name: string;
@@ -9,7 +9,7 @@ type IconButtonProps = {
   color?: string;
 };
 
-const IconButton = ({name, size = 24, color = 'black'}: IconButtonProps) => {
+const IconButton = ({ name, size = 24, color = 'black' }: IconButtonProps) => {
   return (
     <TouchableOpacity
       style={styles.button}

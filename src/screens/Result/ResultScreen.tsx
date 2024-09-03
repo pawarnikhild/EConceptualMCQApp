@@ -1,15 +1,15 @@
 import React from 'react';
-import {Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import {useAppSelector} from '../../redux-toolkit/hooks';
-import {StackNavigationParamList} from '../../routes/StackNavigation';
+import { StackNavigationParamList } from '../../routes/StackNavigation';
+import { useAppSelector } from '../../redux-toolkit/hooks';
+import { removeToken } from '../../utils/asyncStorage';
 
+import { sections } from './ResultTypes';
+import { AppColor } from '../../utils/StyleConstant';
 import ResultScreenView from './ResultScreenView';
-import {AppColor} from '../../utils/StyleConstant';
-import {sections} from './ResultTypes';
-import {removeToken} from '../../utils/asyncStorage';
 
 const ResultScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<StackNavigationParamList>>();

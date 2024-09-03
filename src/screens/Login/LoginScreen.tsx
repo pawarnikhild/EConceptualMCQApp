@@ -1,12 +1,12 @@
-import React, {useState, useContext} from 'react';
-import {Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React, { useState, useContext } from 'react';
+import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import {StackNavigationParamList} from '../../routes/StackNavigation';
-import {storeToken} from '../../utils/asyncStorage';
-import {useAppDispatch} from '../../redux-toolkit/hooks';
-import {login} from '../../redux-toolkit/slices/authSlice';
+import { StackNavigationParamList } from '../../routes/StackNavigation';
+import { useAppDispatch } from '../../redux-toolkit/hooks';
+import { storeToken } from '../../utils/asyncStorage';
+import { login } from '../../redux-toolkit/slices/authSlice';
 
 import LoginScreenView from './LoginScreenView';
 
@@ -42,12 +42,12 @@ const LoginScreen = () => {
       return;
     } else {
       try {
-        const resultAction = await dispatch(login({email, password}));
+        const resultAction = await dispatch(login({ email, password }));
         // console.log('result in loginScreen', resultAction);
         // email: admin@econceptual.com
         // password: admin-password
         if (login.fulfilled.match(resultAction)) {
-          const {token} = resultAction.payload;
+          const { token } = resultAction.payload;
           storeToken(token);
           Alert.alert('Login Successful', 'You have logged in successfully!', [
             {

@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {RadioButton} from 'react-native-paper';
-import {AppColor} from '../utils/StyleConstant';
+import { StyleSheet, Text, View } from 'react-native';
+import { RadioButton } from 'react-native-paper';
+import { AppColor } from '../utils/StyleConstant';
 
 interface RadioButtonOptionProps {
   value: string;

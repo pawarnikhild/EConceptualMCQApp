@@ -1,5 +1,11 @@
-import React, {useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { AppColor } from '../utils/StyleConstant';
 
@@ -34,10 +40,10 @@ const CustomTextInput = ({
       <View
         style={[
           styles.inputWrapper,
-          {backgroundColor :backgroundColor || AppColor.lightgrey},
+          { backgroundColor: backgroundColor || AppColor.lightgrey },
         ]}>
         <TextInput
-          style={[styles.textInput, { width: secureText ? '90%' :'100%'}]}
+          style={[styles.textInput, { width: secureText ? '90%' : '100%' }]}
           value={value}
           placeholder={placeholder}
           placeholderTextColor={'gray'}

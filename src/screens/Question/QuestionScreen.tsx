@@ -1,25 +1,23 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React, { useEffect, useState } from 'react';
+import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import {StackNavigationParamList} from '../../routes/StackNavigation';
-import {useAppDispatch, useAppSelector} from '../../redux-toolkit/hooks';
-import {calculateResult} from '../../redux-toolkit/slices/resultSlice';
-import {fetchQuestions} from '../../redux-toolkit/slices/questionSlice';
+import { StackNavigationParamList } from '../../routes/StackNavigation';
+import { useAppDispatch, useAppSelector } from '../../redux-toolkit/hooks';
+import { calculateResult } from '../../redux-toolkit/slices/resultSlice';
+import { fetchQuestions } from '../../redux-toolkit/slices/questionSlice';
 
 import QuestionScreenView from './QuestionScreenView';
 
 const QuestionScreen = () => {
-  const token = useAppSelector(state => state.auth.token)
+  const token = useAppSelector(state => state.auth.token);
   const dispatch = useAppDispatch();
-  const {questions, loading} = useAppSelector(state => state.question);
+  const { questions, loading } = useAppSelector(state => state.question);
 
+  const navigation = useNavigation<NativeStackNavigationProp<StackNavigationParamList>>();
 
-  const navigation =
-    useNavigation<NativeStackNavigationProp<StackNavigationParamList>>();
-
-  const [answers, setAnswers] = useState<{[key: number]: string | null}>({});
+  const [answers, setAnswers] = useState<{ [key: number]: string | null }>({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -40,7 +38,7 @@ const QuestionScreen = () => {
           [currentQuestion.id]: null, // or ''
         };
       } else {
-        return {...prevAnswers, [currentQuestion.id]: newValue};
+        return { ...prevAnswers, [currentQuestion.id]: newValue };
       }
     });
   };
@@ -67,7 +65,7 @@ const QuestionScreen = () => {
       {
         text: 'OK',
         onPress: () => {
-          dispatch(calculateResult({questions, answers}));
+          dispatch(calculateResult({ questions, answers }));
           navigation.replace('Result');
         },
       },

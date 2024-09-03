@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_URL = 'https://econceptual-interview-mock.vercel.app/api';
+import { BASE_URL } from "../config/apiConfig";
 
 export const loginService = async (email: string, password: string) => {
   try {

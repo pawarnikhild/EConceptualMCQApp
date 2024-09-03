@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, Text, SafeAreaView, ActivityIndicator} from 'react-native';
-import {RadioButton} from 'react-native-paper';
+import { View, Text, SafeAreaView, ActivityIndicator } from 'react-native';
+import { RadioButton } from 'react-native-paper';
 
 import RadioButtonOption from '../../components/RadioButtonOption';
 import CustomButton from '../../components/CustomButton';
 
-import {QuestionScreenViewProps} from './QuestionTypes';
+import { QuestionScreenViewProps } from './QuestionTypes';
 import GlobalStyles from '../../utils/GlobalStyles';
-import {AppColor} from '../../utils/StyleConstant';
+import { AppColor } from '../../utils/StyleConstant';
 import QuestionScreenStyle from './QuestionScreenStyle';
 
 const QuestionScreenView = ({
