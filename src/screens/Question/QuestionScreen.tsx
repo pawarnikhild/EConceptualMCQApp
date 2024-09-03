@@ -4,13 +4,12 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import AuthContext from '../../context/AuthContext';
-import {useAppDispatch} from '../../redux-toolkit/hooks';
+import {useAppDispatch, useAppSelector} from '../../redux-toolkit/hooks';
 import {calculateResult} from '../../redux-toolkit/slices/resultSlice';
 
 import {StackNavigationParamList} from '../../routes/StackNavigation';
-import {fetchQuestions} from '../../services/question-services';
+import {fetchQuestions} from '../../redux-toolkit/slices/questionSlice';
 
-import {Question} from './QuestionTypes';
 import QuestionScreenView from './QuestionScreenView';
 
 const QuestionScreen = () => {
@@ -21,14 +20,11 @@ const QuestionScreen = () => {
   const {token} = authContext;
 
   const dispatch = useAppDispatch();
+  const {questions, loading} = useAppSelector(state => state.question);
 
   const navigation =
-    useNavigation<
-      NativeStackNavigationProp<StackNavigationParamList, 'Login'>
-    >();
+    useNavigation<NativeStackNavigationProp<StackNavigationParamList>>();
 
-  const [loading, setLoading] = useState(false);
-  const [questions, setQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<{[key: number]: string | null}>({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -36,30 +32,8 @@ const QuestionScreen = () => {
   const currentAnswer = answers[currentQuestion?.id] || '';
 
   useEffect(() => {
-    loadQuestions();
+    dispatch(fetchQuestions(token));
   }, [token]);
-
-  const loadQuestions = async () => {
-    try {
-      setLoading(true);
-      const result = await fetchQuestions(token);
-      if (result.success) {
-        setQuestions(result.data);
-        console.log('Questions fetched');
-      } else {
-        console.log('Error in getting questions', result.error);
-        Alert.alert('Failure in fetching questions', result.error);
-      }
-    } catch (error) {
-      console.log(
-        'Unexpected error in getting questions on QuestionScreen: ',
-        JSON.stringify(error),
-      );
-      Alert.alert('Something went wrong. Kindly try again!');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleValueChange = (newValue: string) => {
     setAnswers(prevAnswers => {

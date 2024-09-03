@@ -1,5 +1,4 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-
 import {Question, Answers, Result} from '../../screens/Question/QuestionTypes';
 
 const initialState: Result = {
@@ -56,7 +55,7 @@ const resultSlice = createSlice({
       state.marksScored = totalMarksScored,
       state.marksLost = marksLost,
       state.totalMarks = totalMarks;
-      console.log('state', state);
+      console.log('Result calculated in resultSlice', state);
     },
   },
 });

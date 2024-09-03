@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import resultReducer from './slices/resultSlice'
+import questionReducer from './slices/questionSlice'
+
 export const store = configureStore({
     reducer: {
-        result: resultReducer
+        result: resultReducer,
+        question: questionReducer
     }
 
 })
