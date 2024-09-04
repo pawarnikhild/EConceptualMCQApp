@@ -54,7 +54,7 @@ npx react-native run-ios
 
 ## APK file
 
-[Download apk](https://github.com/pawarnikhild/EConceptualMCQApp/blob/main/Project%20Demo/APK/EConceptualMCQApp.apk)
+[Download apk](https://github.com/pawarnikhild/EConceptualMCQApp/blob/improvement/redux-toolkit-integration/Project%20Demo/APK/EConceptualMCQApp.apk)
 
 >**Note:** The APK provided is safe to install. It does not contain any harmful content. You can confidently install it on your device.
 
